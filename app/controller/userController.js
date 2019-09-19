@@ -10,7 +10,7 @@ router.post('/register', function (req, res) {
 		.then((user) => {
 			res.send(user)
 		})
-		.catch(err => res.send(err))
+		.catch(err => res.send({err}))
 })
 
 //login
@@ -22,10 +22,10 @@ router.post('/login', function (req, res) {
 		})
 		.then((token) => {
 			res.setHeader('x-auth', token)
-			res.send(token)
+			res.send({token})
 		})
 		.catch(err => {
-			res.send(err)
+			res.send({err})
 		})
 })
 

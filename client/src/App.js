@@ -1,15 +1,24 @@
 import React from 'react';
-import './App.css'
+import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
-import Table from './components/Expense/Table';
+import ViewExpense from './components/Expense/ViewExpense';
+import AddExpense from './components/Expense/AddExpense';
+import Card from './components/Group/Card';
+
+import './App.css'
+
 function App() {
 	return (
-		<div >
-			<Login />
-			{/* <Register/> */}
-			{/* <Table/> */}
-		</div>
+		<BrowserRouter>
+			<Switch>
+				<Route path="/" component={Login} exact={true} />
+				<Route path="/register" component={Register} exact={true} />
+				<Route path="/expenses" component={ViewExpense} exact={true} />
+				<Route path="/expenses/add" component={AddExpense} exact={true} />
+				<Route path="/expenses/group" component={Card} exact={true} />
+			</Switch>
+		</BrowserRouter>
 	);
 }
 

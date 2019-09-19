@@ -39,6 +39,7 @@ function checkFileType(file, cb) {
 
 router.get('/expenses', function (req, res) {
 	Expense.find()
+	.populate('paidBy','userName')
 		.then((expense) => {
 			console.log(expense)
 			res.send(expense)
@@ -65,13 +66,27 @@ router.post('/expenses', function (req, res) {
 		})
 })
 
-
-router.delete('/expenses/groups/:id', function (req, res) {
+router.delete('/expenses/:id', function (req, res) {
 	const id = req.params.id
 	Expense.findByIdAndDelete({ _id: id })
 		.then(() => {
 			res.send({ notice: 'Record successfully deleted' })
 		})
 		.catch(err => res.send(err))
+})
+
+router.delete('/expenses/groups/:id', function (req, res) {
+	const id = req.params.id
+	if (id) {
+		Expense.findByIdAndDelete(id)
+			.then(() => {
+				res.send({ notice: 'Record successfully deleted' })
+			})
+			.catch(err => res.send(err))
+	}
+	else {
+		res.send({ notice: "wrong id.." })
+	}
+
 })
 module.exports = { expenseRouter: router }

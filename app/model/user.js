@@ -94,7 +94,7 @@ userSchema.statics.findByCredentials = function (email, password) {
 						return Promise.resolve(user)
 					}
 					else {
-						return Promise.reject('Invalid Password')
+						return Promise.reject('Invalid Email/Password')
 					}
 				})
 		})

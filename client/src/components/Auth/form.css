@@ -3,3 +3,10 @@
 	margin-left: 30%;
 	width: 70%;
 }
+
+.text{
+	text-align:center;
+	align-content: center;
+	line-height: 0.8;
+	font-size: 20px;
+}
