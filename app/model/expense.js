@@ -33,7 +33,7 @@ const expenseSchema = new Schema({
 	createdAt: {
 		type: Date,
 		required: true,
-		default: Date.now()
+		default: Date.now
 	},
 	split:
 	{
@@ -42,10 +42,10 @@ const expenseSchema = new Schema({
 		enum: ['equally', 'unequally', 'percentage'],
 		default: 'equally'
 	},
-	notes: 
-		{
-			type: String,
-		},
+	notes:
+	{
+		type: String,
+	},
 })
 
 const Expense = mongoose.model('Expense', expenseSchema)

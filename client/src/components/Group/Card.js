@@ -1,16 +1,27 @@
 import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 
-const Card = () => {
+const Card = (props) => {
 	return (
 		<MDBCol>
 			<MDBCard style={{ width: "22rem" }}>
 				<MDBCardBody>
-					<MDBCardTitle>Card title</MDBCardTitle>
+					<MDBCardTitle> Expenses </MDBCardTitle>
 					<MDBCardText>
-						Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
-          </MDBCardText>
+						Description:   {props.description}
+					</MDBCardText>
+					<MDBCardText>
+						PaidBy:   {props.paidBy}
+					</MDBCardText>
+					<MDBCardText>
+						Split:   {props.split}
+					</MDBCardText>
+					<MDBCardText>
+						Amount:   {props.amount}
+					</MDBCardText>
+					<MDBCardText>
+						Notes:   {props.notes}
+					</MDBCardText>
 				</MDBCardBody>
 			</MDBCard>
 		</MDBCol>

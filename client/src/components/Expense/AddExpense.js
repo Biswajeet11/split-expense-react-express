@@ -8,7 +8,8 @@ class AddExpense extends React.Component {
 			paidBy: '',
 			notes: '',
 			description: '',
-			amount: ''
+			amount: '',
+			users: [],
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -17,14 +18,32 @@ class AddExpense extends React.Component {
 		this.setState({ [e.target.name]: e.target.value })
 	}
 
+	componentDidMount() {
+		Axios.get('/')
+			.then((response) => {
+				const users = response.data
+				this.setState({ users })
+			})
+	}
+
 	handleSubmit(e) {
 		e.preventDefault()
-		const addData=this.state
-		console.log(this.state)
-		Axios.post('/expenses',addData)
-		.then((response)=>{
-			console.log(response.data)
-		})
+		const addData = {
+			paidBy: this.state.paidBy,
+			notes: this.state.notes,
+			description: this.state.description,
+			amount: this.state.amount,
+		}
+		Axios.post('/expenses', addData)
+			.then((response) => {
+				const _id = response.data.expense._id
+				if (response.data.errors) {
+					console.log(response.data.errors)
+				}
+				else {
+					this.props.history.push(`/expenses/groups/${_id}`)
+				}
+			})
 	}
 
 	render() {
@@ -64,13 +83,13 @@ class AddExpense extends React.Component {
 								PaidBy
 							</label>
 
-							<input
-								type="text"
-								className="form-control"
-								name="paidBy"
-								value={this.state.paidBy}
-								onChange={this.handleChange}
-							/>
+							<select className="browser-default custom-select" value={this.state.paidBy} name="paidBy" onChange={this.handleChange}>
+								<option>Select User</option>
+								{this.state.users && this.state.users.map((user) => {
+									return <option key={user._id} value={user._id}>{user.userName}</option>
+								})}
+							</select>
+
 							<br />
 							<label
 								className="grey-text font-weight-light"

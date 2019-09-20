@@ -4,9 +4,9 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import ViewExpense from './components/Expense/ViewExpense';
 import AddExpense from './components/Expense/AddExpense';
-import Card from './components/Group/Card';
-
+import ViewGroup from './components/Group/ViewGroup';
 import './App.css'
+
 
 function App() {
 	return (
@@ -16,7 +16,7 @@ function App() {
 				<Route path="/register" component={Register} exact={true} />
 				<Route path="/expenses" component={ViewExpense} exact={true} />
 				<Route path="/expenses/add" component={AddExpense} exact={true} />
-				<Route path="/expenses/group" component={Card} exact={true} />
+				<Route path="/expenses/groups/:id" component={ViewGroup} exact={true} />
 			</Switch>
 		</BrowserRouter>
 	);

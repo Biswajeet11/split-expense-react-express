@@ -39,7 +39,7 @@ function checkFileType(file, cb) {
 
 router.get('/expenses', function (req, res) {
 	Expense.find()
-	.populate('paidBy','userName')
+		.populate('paidBy', 'userName')
 		.then((expense) => {
 			console.log(expense)
 			res.send(expense)
@@ -71,6 +71,16 @@ router.delete('/expenses/:id', function (req, res) {
 	Expense.findByIdAndDelete({ _id: id })
 		.then(() => {
 			res.send({ notice: 'Record successfully deleted' })
+		})
+		.catch(err => res.send(err))
+})
+
+router.get('/expenses/:id', function (req, res) {
+	const id = req.params.id
+	console.log(typeof id,'the type is....')
+	Expense.findById(id)
+		.then((expense) => {
+			res.send(expense)
 		})
 		.catch(err => res.send(err))
 })

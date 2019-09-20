@@ -34,20 +34,20 @@ class ViewExpense extends React.Component {
 							<MDBTableHead color="primary-color" textWhite>
 								<tr >
 									<th>SlNo.</th>
-									<th>GroupName</th>
-									<th>Members</th>
-									<th>PaidBy</th>
 									<th>Amount</th>
+									<th>PaidBy</th>
+									<th>Split</th>
+									<th>Created At</th>
 									<th>Action</th>
 								</tr>
 							</MDBTableHead>
 							{this.state.expenses.map((expense, index) => {
 								return <TableRow key={expense._id}
 									index={index}
-									groupName={expense.group.groupName}
-									members={expense.group.groupMembers.length}
 									amount={expense.amount}
 									paidBy={expense.paidBy.userName}
+									splitBy={expense.split}
+									createdAt={expense.createdAt}
 								/>
 							})}
 						</MDBTable>

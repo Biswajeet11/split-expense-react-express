@@ -29,5 +29,13 @@ router.post('/login', function (req, res) {
 		})
 })
 
+//users
+router.get('/',function(req,res){
+	User.find()
+	.then((user)=>{
+		res.send(user)
+	})
+	.catch(err=>res.send({err}))
+})
 
 module.exports = { userRouter: router }

@@ -6,10 +6,10 @@ const TableRow = (props) => {
 		<MDBTableBody>
 			<tr>
 				<td>{props.index + 1}</td>
-				<td>{props.groupName}</td>
-				<td>{props.members}</td>
-				<td>{props.paidBy}</td>
 				<td>{props.amount}</td>
+				<td>{props.paidBy}</td>
+				<td>{props.splitBy}</td>
+				<td>{props.createdAt}</td>
 				<td><i className="fa fa-edit" /> <i className="far fa-file-alt" /></td>
 			</tr>
 		</MDBTableBody>
