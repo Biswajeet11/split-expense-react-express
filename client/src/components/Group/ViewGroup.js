@@ -13,7 +13,6 @@ class ViewGroup extends React.Component {
 			notes: '',
 			paidBy: '',
 			split: '',
-			groups: [],
 			showModal: false
 		}
 	}
@@ -47,7 +46,7 @@ class ViewGroup extends React.Component {
 					notes={this.state.notes}
 				/>
 				{this.state.showModal && (<ModalPage />)}
-				<MDBBtn color="primary" onClick={this.openModal}> Add Group </MDBBtn>
+				<MDBBtn  onClick={this.openModal}> Add Group </MDBBtn>
 			</div>
 		)
 	}

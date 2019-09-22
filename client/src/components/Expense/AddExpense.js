@@ -36,11 +36,12 @@ class AddExpense extends React.Component {
 		}
 		Axios.post('/expenses', addData)
 			.then((response) => {
-				const _id = response.data.expense._id
+
 				if (response.data.errors) {
 					console.log(response.data.errors)
 				}
 				else {
+					const _id = response.data.expense._id
 					this.props.history.push(`/expenses/groups/${_id}`)
 				}
 			})

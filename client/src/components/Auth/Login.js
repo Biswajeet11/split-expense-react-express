@@ -27,6 +27,7 @@ class Login extends React.Component {
 		console.log(e.target.value)
 		this.setState({ [e.target.name]: e.target.value })
 	}
+
 	handleSubmit(e) {
 		e.preventDefault()
 		const loginData = {

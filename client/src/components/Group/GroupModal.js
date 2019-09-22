@@ -1,33 +1,39 @@
-import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import React from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import GroupForm from './GroupForm';
 
-class ModalPage extends Component {
-	state = {
-		modal: false
+class ModalExample extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			modal: false
+		};
+		this.toggle = this.toggle.bind(this);
 	}
 
-	toggle = () => {
-		this.setState({
-			modal: !this.state.modal
-		});
+	toggle() {
+		this.setState(prevState => ({
+			modal: !prevState.modal
+		}));
 	}
 
 	render() {
 		return (
-			<MDBContainer>
-				<MDBModal>
-					<MDBModalHeader toggle={this.toggle}>MDBModal title</MDBModalHeader>
-					<MDBModalBody>
-						(...)
-        </MDBModalBody>
-					<MDBModalFooter>
-						<MDBBtn color="secondary" >Close</MDBBtn>
-						<MDBBtn color="primary">Save changes</MDBBtn>
-					</MDBModalFooter>
-				</MDBModal>
-			</MDBContainer>
+			<div>
+				<Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+				<Modal isOpen={this.state.modal} className={this.props.className}>
+					<ModalHeader >Add Group Members</ModalHeader>
+					<ModalBody>
+						<GroupForm />
+					</ModalBody>
+					<ModalFooter>
+						<Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+						<Button color="secondary" onClick={this.toggle}>Cancel</Button>
+					</ModalFooter>
+				</Modal>
+			</div>
 		);
 	}
 }
 
-export default ModalPage;
+export default ModalExample;

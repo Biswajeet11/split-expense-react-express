@@ -30,18 +30,18 @@ const groupSchema = new Schema({
         ref: 'User',
         required: true,
       },
-      amountSpent: {
-        type: Number,
-        default: 0
-      },
-      reimbursement: {
-        type: Number,
-        default: 0
-      },
-      screenShotsReciept:
-        {
-          type: String,
-        }
+      // amountSpent: {
+      //   type: Number,
+      //   default: 0
+      // },
+      // reimbursement: {
+      //   type: Number,
+      //   default: 0
+      // },
+      // screenShotsReciept:
+      //   {
+      //     type: String,
+      //   }
     }]
   }
 })
