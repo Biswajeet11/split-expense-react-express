@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 const Group = require('../model/group')
 
-router.get('/groups', function (req, res) {
-	Group.find()
+router.get('/groups/:id', function (req, res) {
+	const _id = req.params.id
+	Group.findById(_id)
 		.then((group) => {
 			res.send(group)
 		})

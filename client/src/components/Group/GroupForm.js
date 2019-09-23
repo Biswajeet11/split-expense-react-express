@@ -11,7 +11,8 @@ class GroupForm extends React.Component {
 			groupMembers: [],
 			groupName: '',
 			groupType: '',
-			selectedMembers: []
+			selectedMembers: [],
+			groupData: []
 		}
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
@@ -31,7 +32,11 @@ class GroupForm extends React.Component {
 			groupType: this.state.groupType,
 		}
 		Axios.post('/groups', modalData)
-			.then((response) => console.log('the group is ....', response.data))
+			.then((response) => {
+				this.setState({ groupData: response.data })
+				console.log('The group is ....', this.state.groupData)
+				// this.props.handleSubmit(response.data)
+			})
 	}
 
 	handleChange(e) {

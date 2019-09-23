@@ -6,7 +6,7 @@ import ModalPage from './GroupModal';
 import GroupRow from './GroupRow';
 
 class ViewGroup extends React.Component {
-	constructor() {
+	constructor(props) {
 		super()
 		this.state = {
 			description: '',
@@ -36,10 +36,11 @@ class ViewGroup extends React.Component {
 					notes: response.data.notes,
 				})
 			})
-			Axios.get('/groups')
-			.then((response)=>{
-				console.log('The response data is ......',response.data)
-			})
+			console.log('The id is ........',id)
+			// Axios.get(`/groups`)
+			// .then((response)=>{
+			// 	console.log('The response data is ......',response.data)
+			// })
 	}
 
 	render() {
