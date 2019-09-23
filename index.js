@@ -4,11 +4,12 @@ const mongoose = require('./config/db')
 const cors = require('cors')
 const { userRouter } = require('./app/controller/userController')
 const { expenseRouter } = require('./app/controller/expenseController')
+const {groupController} =require('./app/controller/groupController')
 const PORT = 3020
 
 app.use(cors())
 app.use(express.json())
 app.use('/user', userRouter)
 app.use('/user', expenseRouter)
-
+app.use('/user', groupController)
 app.listen(PORT, () => console.log(`Listening at port${PORT}`))

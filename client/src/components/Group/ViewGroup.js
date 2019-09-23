@@ -3,17 +3,19 @@ import { MDBBtn } from 'mdbreact';
 import Axios from '../../config/Axios';
 import Card from './Card';
 import ModalPage from './GroupModal';
+import GroupRow from './GroupRow';
 
 class ViewGroup extends React.Component {
-	constructor(props) {
-		super(props)
+	constructor() {
+		super()
 		this.state = {
 			description: '',
 			amount: '',
 			notes: '',
 			paidBy: '',
 			split: '',
-			showModal: false
+			showModal: false,
+			tableData:[]
 		}
 	}
 
@@ -34,6 +36,10 @@ class ViewGroup extends React.Component {
 					notes: response.data.notes,
 				})
 			})
+			Axios.get('/groups')
+			.then((response)=>{
+				console.log('The response data is ......',response.data)
+			})
 	}
 
 	render() {
@@ -46,7 +52,8 @@ class ViewGroup extends React.Component {
 					notes={this.state.notes}
 				/>
 				{this.state.showModal && (<ModalPage />)}
-				<MDBBtn  onClick={this.openModal}> Add Group </MDBBtn>
+				<MDBBtn onClick={this.openModal}> Add Group </MDBBtn>
+				<GroupRow/>
 			</div>
 		)
 	}

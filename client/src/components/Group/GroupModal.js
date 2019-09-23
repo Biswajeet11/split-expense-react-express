@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import GroupForm from './GroupForm';
 
-class ModalExample extends React.Component {
+
+class ModalPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -25,15 +26,12 @@ class ModalExample extends React.Component {
 					<ModalHeader >Add Group Members</ModalHeader>
 					<ModalBody>
 						<GroupForm />
+						<Button color="secondary" onClick={this.toggle}> Cancel </Button>
 					</ModalBody>
-					<ModalFooter>
-						<Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-						<Button color="secondary" onClick={this.toggle}>Cancel</Button>
-					</ModalFooter>
 				</Modal>
 			</div>
 		);
 	}
 }
 
-export default ModalExample;
+export default ModalPage;

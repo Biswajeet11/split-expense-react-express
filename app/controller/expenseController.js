@@ -41,7 +41,6 @@ router.get('/expenses', function (req, res) {
 	Expense.find()
 		.populate('paidBy', 'userName')
 		.then((expense) => {
-			console.log(expense)
 			res.send(expense)
 		})
 })
